@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" />
     <link rel="stylesheet" href="dist/css/Header-Blue.css" />
     <link rel="stylesheet" href="dist/css/Header-Dark.css" />
+    <link rel="stylesheet" href="dist/css/Footer-Clean.css" />
     <link rel="stylesheet" href="dist/css/styles.css" />
 </head>
 
@@ -26,12 +27,12 @@
             <div class="card">
                 <div class="card-body" style="width: 500;">
                     <div class="row">
-                        <h4 class="card-title" style="margin-bottom: 50px;">Enter the number</h4>
+                        <h1 class="card-title" style="margin-bottom: 50px;">Enter the number</h1>
                     </div>
                     <form id="numberForm" class="form-group row" action="primenumber.php" method="post">
 
                         <div class="form-group">
-                            <div class="form-row">
+                            <div class="form-group">
                                 <div class="row">
                                     <div class="col-lg-4"><label class="col-form-label form-control">Number :</label></div>
                                     <div class="col-lg-8"><input type="number" class="border rounded form-control " name="primenumber" placeholder="enter the number" min="1" required style="padding: 0px;padding-left: 8px;margin-left: 0px;width: 250px;" /></div>
@@ -44,7 +45,17 @@
             </div>
         </div>
     </section>
-    <footer></footer>
+    <div class="footer-clean" style="height: 72px;margin-top:90px;padding-top: 10px;padding-bottom: 10px;">
+        <footer>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7 offset-lg-3 item social" style="padding: auto;padding-left: 0px;margin: auto;">
+                        <p class="copyright" style="width: 500px;height: 25px;font-size: 14px;">GABRIEL KALALA 21811860 - Cyprus International University © 2020</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 </body>
 
 </html>
