@@ -29,7 +29,7 @@
                     <div class="row">
                         <h1 class="card-title" style="margin-bottom: 50px;">Enter the number</h1>
                     </div>
-                    <form id="numberForm" class="form-group row" action="primenumber.php" method="post">
+                    <form id="numberForm" class="form-group row" action="index.php" method="post">
 
                         <div class="form-group">
                             <div class="form-group">
@@ -43,6 +43,46 @@
                     </form>
                 </div>
             </div>
+        </div>
+    </section>
+    <section class="col-lg-8 offset-lg-2">
+        <!-- METHOD I -->
+        <?php
+        $test = True;
+        $count = 0;
+        $factor = "";
+        $z = 0; //equalizer
+
+        if (isset($_POST['primenumber'])) {
+            $n = $_POST['primenumber'];
+            for ($i = 2; $i < $n; $i++) {
+                $count = $count + 1;
+                if (($n % $i) == 0) {
+                    //echo $i;
+                    //echo (', ');
+                    $factor = $factor + $i;
+                    $test = False;
+                }
+            }
+
+            if ($test == True) {
+                $status = "" . $n . " is Prime Number and Factors are ->" . $factor;
+            } else {
+                $status = "" . $n . " is composite Number and Factors are ->" . $factor;
+            }
+        }
+        ?>
+
+        <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading">Prime Number</h4>
+            <p>Please give a number -> 
+                <?php if (isset($_POST['primenumber'])) {echo $n;} ?><br />
+                <?php if (isset($_POST['primenumber'])) {
+                    echo $status; }?><br />
+                With 1st method number of iteration is : <?php if (isset($_POST['primenumber'])) {
+                    echo $count;} ?><br />
+                With 1st method number of iteration is :
+            </p>
         </div>
     </section>
     <div class="footer-clean" style="height: 72px;margin-top:90px;padding-top: 10px;padding-bottom: 10px;">
