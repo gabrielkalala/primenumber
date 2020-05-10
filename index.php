@@ -49,8 +49,8 @@
         <!-- METHOD I -->
         <?php
         $test = True;
-        $count = 0;
-        $factor = "";
+        $count = 1;
+        $factor = array();
         $z = 0; //equalizer
 
         if (isset($_POST['primenumber'])) {
@@ -58,25 +58,34 @@
             for ($i = 2; $i < $n; $i++) {
                 $count = $count + 1;
                 if (($n % $i) == 0) {
-                    //echo $i;
-                    //echo (', ');
-                    $factor = $factor + $i;
+                    $factor[] = $i;
                     $test = False;
                 }
             }
 
-            if ($test == True) {
-                $status = "" . $n . " is Prime Number and Factors are ->" . $factor;
+            if($test == True) {
+                $factor[] = $n;
+                $k="";
+                foreach ($factor as $key => $value) {
+                    $k = $k.''.$value . " | ";
+                }
+                $status = "" . $n . " is Prime Number and Factors are -> ".$k;
             } else {
-                $status = "" . $n . " is composite Number and Factors are ->" . $factor;
+                $factor[]=$n;
+                $k = "";
+                foreach ($factor as $key => $value) {
+                    $k = $k . '' . $value . " | ";
+                }
+                $status = "" . $n . " is composite Number and Factors are -> ".$k;
             }
         }
         ?>
 
         <div class="alert alert-info" role="alert">
             <h4 class="alert-heading">Prime Number</h4>
-            <p>Please give a number -> 
-                <?php if (isset($_POST['primenumber'])) {echo $n;} ?><br />
+            <hr>
+            <p>Please give a number --> <?php if(isset($_POST['primenumber'])) {echo $n;} ?>
+                <br />
                 <?php if (isset($_POST['primenumber'])) {
                     echo $status; }?><br />
                 With 1st method number of iteration is : <?php if (isset($_POST['primenumber'])) {
