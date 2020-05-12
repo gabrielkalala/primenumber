@@ -51,7 +51,6 @@
         $test = True;
         $count = 1;
         $factor = array();
-        $z = 0; //equalizer
 
         if (isset($_POST['primenumber'])) {
             $n = $_POST['primenumber'];
@@ -63,34 +62,83 @@
                 }
             }
 
-            if($test == True) {
+            if ($test == True) {
                 $factor[] = $n;
-                $k="";
-                foreach ($factor as $key => $value) {
-                    $k = $k.''.$value . " | ";
-                }
-                $status = "" . $n . " is Prime Number and Factors are -> ".$k;
-            } else {
-                $factor[]=$n;
                 $k = "";
                 foreach ($factor as $key => $value) {
                     $k = $k . '' . $value . " | ";
                 }
-                $status = "" . $n . " is composite Number and Factors are -> ".$k;
+                $status = "" . $n . " is <strong> Prime Number </strong> and Factors are -> " . $k;
+            } else {
+                $factor[] = $n;
+                $k = "";
+                foreach ($factor as $key => $value) {
+                    $k = $k . '' . $value . " | ";
+                }
+                $status = "" . $n . " is composite Number and Factors are -> " . $k;
             }
         }
+        ?>
+        <!-- METHOD II -->
+        <?php
+        $i = 2;
+        $count2 = 0;
+        $countnotprime = 0;
+
+        if (isset($_POST['primenumber'])) {
+            $n = $_POST['primenumber'];
+            $x = $n;
+            $b = sqrt($n);
+            while ($x > 1 && $i <= $b) {
+                $count2 = $count2 + 1;
+
+                while (($x % $i) == 0) {
+                    //echo $i;
+
+                    $x = $x / $i;
+                    $b = sqrt($x);
+                    $countnotprime = $countnotprime + 1;
+
+                    //echo (", ");
+                }
+
+                $i = $i + 1;
+            }
+
+            if ($countnotprime == 0) {
+                //echo ($n);
+                //echo ("Number of iteration: ");
+                //echo $count2;
+                $c = $count2;
+            }else {
+
+                if ($x > 1) {
+                    echo $x;
+                    echo ("<br>");
+                }
+
+                echo ($n);
+                $countnotprime = $countnotprime + 1;
+                $c = $countnotprime;
+                echo ("Number of iteration: ");
+                echo ($countnotprime);
+            }
+        }
+        
         ?>
 
         <div class="alert alert-info" role="alert">
             <h4 class="alert-heading">Prime Number</h4>
             <hr>
-            <p>Please give a number --> <?php if(isset($_POST['primenumber'])) {echo $n;} ?>
+            <p>Please give a number --> <?php if (isset($_POST['primenumber'])) {
+                                            echo $n;
+                                        } ?>
                 <br />
                 <?php if (isset($_POST['primenumber'])) {
-                    echo $status; }?><br />
-                With 1st method number of iteration is : <?php if (isset($_POST['primenumber'])) {
-                    echo $count;} ?><br />
-                With 1st method number of iteration is :
+                    echo $status;
+                } ?><br />
+                With 1st method number of iteration is : <?php if (isset($_POST['primenumber'])) { echo $count;} ?><br />
+                With 2nd method number of iteration is : <?php if (isset($_POST['primenumber'])) { echo $c;} ?>
             </p>
         </div>
     </section>
@@ -99,7 +147,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-7 offset-lg-3 item social" style="padding: auto;padding-left: 0px;margin: auto;">
-                        <p class="copyright" style="width: 500px;height: 25px;font-size: 14px;">GABRIEL KALALA 21811860 - Cyprus International University © 2020</p>
+                        <p class="copyright" style="width: 500px;height: 25px;font-size: 14px;">GABRIEL KALALA 21811863 - Cyprus International University © 2020</p>
                     </div>
                 </div>
             </div>
